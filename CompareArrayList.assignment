@@ -4,6 +4,12 @@ let array2 = [14, 8, 2, 7, 7]
 let array3 = ["goat", "fish", "deer", "goat", "bear"]
 let array4 = ["ant", "bear", "goat"]
 
+/// The Function is used to compare two arrays, array1 and array2, find which elements in array2 are not present in array1
+/// - Parameters:
+///   - list1: list of array of any data type can be passed
+///   - list2: list of array of any data type can be passed
+/// - Returns: Array sorted list
+
 func solve<Element: Hashable & Comparable>(list1: [Element], list2: [Element]) -> [Element] {
     var differenceList = Array(Set(list2).subtracting(Set(list1)))
     let intersectionList = Array(Set(list2).intersection(Set(list1)))
