@@ -1,0 +1,26 @@
+let array1 = [8, 8, 7, 2, 1, 7, 9]
+let array2 = [14, 8, 2, 7, 7]
+
+let array3 = ["goat", "fish", "deer", "goat", "bear"]
+let array4 = ["ant", "bear", "goat"]
+
+func solve<Element: Hashable & Comparable>(list1: [Element], list2: [Element]) -> [Element] {
+    var differenceList = Array(Set(list2).subtracting(Set(list1)))
+    let intersectionList = Array(Set(list2).intersection(Set(list1)))
+    for i in intersectionList {
+        let counter1 = list1.reduce(0) { partialResult, element -> Int in
+            partialResult + ((i == element) ? 1 : 0)
+        }
+        let counter2 = list2.reduce(0) { partialResult, element -> Int in
+            partialResult + ((i == element) ? 1 : 0)
+        }
+        if counter1 != counter2 {
+            differenceList.append(i)
+        }
+    }
+    differenceList.sort(by: < )
+    return differenceList
+}
+
+print(solve(list1: array1, list2: array2))
+print(solve(list1: array3, list2: array4))
